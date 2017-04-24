@@ -59,6 +59,10 @@ module ForeignCurrencyExchange
       "#{formatted_amount} #{currency}"
     end
 
+    def inspect
+      to_s
+    end
+
     # Returns new money object converted to given currency,
     #   raises UnknownCurrencyError in case when given currency is unknown.
     def convert_to(other_currency)

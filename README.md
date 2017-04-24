@@ -11,7 +11,7 @@ require 'foreign_currency_exchange'
 
 # Configure the currency rates with respect to a base currency (here EUR):
 
-Money.conversion_rates(
+ForeignCurrencyExchange::Money.conversion_rates(
   'EUR',
   'USD'     => 1.11,
   'Bitcoin' => 0.0047
@@ -19,7 +19,7 @@ Money.conversion_rates(
 
 # Instantiate money objects:
 
-fifty_eur = Money.new(50, 'EUR')
+fifty_eur = ForeignCurrencyExchange::Money.new(50, 'EUR')
 
 # Get amount and currency:
 
@@ -34,7 +34,7 @@ fifty_eur.convert_to('USD') # => 55.50 USD
 
 # Perform operations in different currencies:
 
-twenty_dollars = Money.new(20, 'USD')
+twenty_dollars = ForeignCurrencyExchange::Money.new(20, 'USD')
 
 # Arithmetics:
 
@@ -45,12 +45,12 @@ twenty_dollars * 3         # => 60 USD
 
 # Comparisons (also in different currencies):
 
-twenty_dollars == Money.new(20, 'USD') # => true
-twenty_dollars == Money.new(30, 'USD') # => false
+twenty_dollars == ForeignCurrencyExchange::Money.new(20, 'USD') # => true
+twenty_dollars == ForeignCurrencyExchange::Money.new(30, 'USD') # => false
 
 fifty_eur_in_usd = fifty_eur.convert_to('USD')
-fifty_eur_in_usd == fifty_eur          # => true
+fifty_eur_in_usd == fifty_eur                                   # => true
 
-twenty_dollars > Money.new(5, 'USD')   # => true
-twenty_dollars < fifty_eur             # => true
+twenty_dollars > ForeignCurrencyExchange::Money.new(5, 'USD')   # => true
+twenty_dollars < fifty_eur                                      # => true
 ```
