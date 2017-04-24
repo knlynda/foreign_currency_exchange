@@ -17,7 +17,7 @@ module ForeignCurrencyExchange
     def initialize(amount, currency)
       check_configuration # Configuration should be valid.
       check_currency(currency) # Currency should be configured before.
-      @amount = amount.is_a?(Integer) ? amount : amount.to_f.round(ROUND_LEVEL)
+      @amount = prepare_amount(amount)
       @currency = currency
     end
 
@@ -25,7 +25,7 @@ module ForeignCurrencyExchange
     #   or converted current object amount to base_currency otherwise.
     def base_amount
       return amount if currency == base_currency
-      (amount / rates[currency].to_f).round(ROUND_LEVEL)
+      prepare_amount(amount / rates[currency].to_f)
     end
 
     def <=>(other)
@@ -72,8 +72,12 @@ module ForeignCurrencyExchange
 
     private
 
+    def prepare_amount(amount)
+      amount.integer? ? amount : amount.round(ROUND_LEVEL)
+    end
+
     def formatted_amount
-      amount.is_a?(Integer) ? amount.to_s : format(AMOUNT_FORMAT, amount)
+      amount.integer? ? amount.to_s : format(AMOUNT_FORMAT, amount)
     end
 
     # Returns amount based on given currency,
