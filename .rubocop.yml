@@ -1,0 +1,19 @@
+# See full list of defaults here: https://github.com/bbatsov/rubocop/blob/master/config/default.yml
+# To see all cops used see here: https://github.com/bbatsov/rubocop/blob/master/config/enabled.yml
+
+AllCops:
+  TargetRubyVersion: 2.3
+  DisplayCopNames: true
+
+LineLength:
+  Max: 120
+
+Style/OpMethod:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - '**/*_spec.rb'
