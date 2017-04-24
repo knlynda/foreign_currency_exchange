@@ -25,7 +25,7 @@ fifty_eur = ForeignCurrencyExchange::Money.new(50, 'EUR')
 
 fifty_eur.amount   # => 50
 fifty_eur.currency # => "EUR"
-fifty_eur.inspect  # => "50.00 EUR"
+fifty_eur.inspect  # => "50 EUR"
 
 # Convert to a different currency (should return a Money
 # instance, not a String):
