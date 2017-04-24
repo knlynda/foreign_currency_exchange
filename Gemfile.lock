@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    foreign_currency_exchange (0.1.1)
+    foreign_currency_exchange (0.1.3)
 
 GEM
   remote: https://rubygems.org/
